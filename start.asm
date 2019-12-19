@@ -13,3 +13,16 @@ mboot:
   MULTIBOOT_HEADER_FLAGS equ MULTIBOOT_PAGE_ALIGN | MULTIBOOT_MEMORY_INFO | MULTIBOOT_AOUT_KLUDGE
   MULTIBOOT_CHECKSUM equ -(MULTIBOOT_HEADER_MAGIC + MULTIBOOT_HEADER_FLAGS)
   EXTERN code, bss, end
+
+  dd mboot
+  dd code
+  dd bss
+  dd end
+  dd start
+
+stublet:
+  jmp $
+
+SECTION .bss
+  resb 8192
+_sys_stack:
