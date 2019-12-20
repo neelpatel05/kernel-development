@@ -39,7 +39,7 @@ int strlen(const char *str)
   return count;
 }
 
-unsigned char importb(unsigned short _port)
+unsigned char inportb(unsigned short _port)
 {
   unsigned char rv;
   __asm____volatile__("inb %1, %0" : "=a" (rv) : "dN" (_port));
